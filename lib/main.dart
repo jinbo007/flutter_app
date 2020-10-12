@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/NewRoute.dart';
+
+import 'RouterTestRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,6 +53,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 1;
+
 
   void _incrementCounter() {
     setState(() {
@@ -112,9 +114,15 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("open new page"),
               textColor: Colors.green,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewRoute();
-                }));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        maintainState: false,
+                        fullscreenDialog: false,
+                        settings: RouteSettings(name: "hello"),
+                        builder: (context) {
+                          return RouterTestRoute();
+                        }));
               },
             )
           ],
